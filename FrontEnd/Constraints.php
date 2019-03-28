@@ -171,7 +171,7 @@ background-image: -webkit-linear-gradient(top, rgba(230, 247, 255,9), rgba(230, 
 		</div>
 	</div>
 
-<div class ="container">
+<div id="card" class ="container1">
 	<!-- <div id="card"  class="jumbotron jumbotron-fluid" > -->
 				<h2 align="center"class="header margin-top:0px">General Course Schedule</h2>
 		<br />
@@ -333,9 +333,10 @@ $(document).ready(function(){
 		            function(data){
 
 			  $('#result').html(data);
-        setTimeout(window.location.reload(false), 10000) ;
+        //setTimeout(window.location.reload(false), 10000) ;
+         $("#card").load(" #card >*");
 
-			  console.log(data);
+			  //console.log(data);
 
 			  });
 
@@ -345,7 +346,7 @@ $(document).ready(function(){
 						//reload();
 
 
-					});S
+					});
 				/*
 				$('#submit').click(function(){
 						$.POST('backendInterface.php',{
@@ -381,7 +382,7 @@ $(document).ready(function(){
 */
 			function someFunction( data ) {
 
-				console.log(data);
+				//console.log(data);
 			}
 
 
