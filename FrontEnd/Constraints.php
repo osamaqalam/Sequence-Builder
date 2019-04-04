@@ -7,9 +7,9 @@ function cardDisp($i)
   $semInfoFE = $_SESSION ['semInfo'];
   echo
   '<div class="card card-body text-center height:400px" style="background: #F8C471" >' .
-    '<p> Minimum Credits This Semester'.
-      '<input type="number" min="0" max="18" id="credits1"/> &nbsp;&nbsp;<input type="button" class="btn btn-success btn-sm" name="btncredits3" id="btncredits3" value="submit"/></p>' .
-      '<table class="gridtable" id="table3" border="0"onclick=window.location.href="file:///X:/xampp/htdocs/SOEN341/FrontEnd/weeklySchedule.html">'.
+    // '<p> Minimum Credits This Semester'.
+    //   '<input type="number" min="0" max="18" id="credits1"/> &nbsp;&nbsp;<input type="button" class="btn btn-success btn-sm" name="btncredits3" id="btncredits3" value="submit"/></p>' .
+      '<table class="gridtable" id="table3" border="0"onclick=window.location.href="file:///X:/xampp/htdocs/SOEN341/FrontEnd/weeklySchedule.php">'.
          '<thead>'.
           '<tr class="tableheader">'.
             '<th>Semester ';  echo $i;
@@ -83,7 +83,8 @@ function cardDisp($i)
       padding: 16px;
       text-align: center;
       background-color: #f1f1f1;
-      padding: 20px;  */
+      */
+      width: 350px;
        margin: 0 8 8 8px;
        opacity: 0.95;
 
@@ -129,30 +130,42 @@ background-image: -webkit-linear-gradient(top, rgba(230, 247, 255,9), rgba(230, 
 		<br />
 		<br />
 
-		<h2 align="center">Distrubte your courses for each semester (0-6 courses)</h2>
+		<!-- <h2 align="center">Distrubte your courses for each semester (0-6 courses)</h2> -->
+    <h2 align="center">Add Costraints</h2>
+
 
 		<div class="form-group">
+      <!-- <div class="center"> -->
 			<form name="add_name" id="add_name">
 				<table class="table table-bordered" id="dynamic_field">
 					 <tr>
-						<td><select id= "listYear1",name="Years" >
-							<option value="1" selected>First Year</option>
-							<option value="2">Second Year</option>
-							<option value="3">Third Year</option>
-							<option value="4">Fourth Year</option>
-							<option value="5">Fifth Year</option>
-							<option value="6">Sixth Year</option>
-							</select>
+						<td>
+              <h2 style="font-size: 15px" align="center">Choose Year</h2>
+              <!-- <div class="ceter"> -->
+                <select id= "listYear1",name="Years" >
+                <option value="1" selected>First Year</option>
+                <option value="2">Second Year</option>
+                <option value="3">Third Year</option>
+                <option value="4">Fourth Year</option>
+                <option value="5">Fifth Year</option>
+                <option value="6">Sixth Year</option>
+                </select>
+              <!-- </div> -->
+
 
 						</td>
-						<td><select id = "list1",name="Term">
+						<td>
+                <h2 style="font-size: 15px" align="center">Choose Semester</h2>
+              <select id = "list1",name="Term">
 							<option value="S" selected>Summer Term</option>
 							<option value="F">Fall Term</option>
 							<option value="W">Winter Term</option>
 							</select>
 
 						</td>
-						<td><select name="Number" id="number1">
+						<td><h2 style="font-size: 15px" align="center">Maximum Classes This Semester </h2>
+
+              <select name="Number" id="number1">
 							<option value="0" selected>0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -162,6 +175,12 @@ background-image: -webkit-linear-gradient(top, rgba(230, 247, 255,9), rgba(230, 
 							<option value="6">6</option>
 							</select>
 						</td>
+            <!-- <td>
+              <p>  Minimum Credits This Semester </p> </td> -->
+                  <td>
+                    <h2 style="font-size: 15px" align="center">Minimum Credits This Semester </h2>
+              <input type="number" min="0" max="18" id="credits1"/> &nbsp;&nbsp;
+            </td>
 						<td><button type="button" name="add" id="add" class="btn btn-success">Next</button></td>
 					</tr>
 				</table>
@@ -247,7 +266,8 @@ $(document).ready(function(){
 	//var i = 1;
 	$('#add').click(function(){
 		i++;
-		$('#dynamic_field').append('<tr id="row'+i+'"><td><select name="Years" " id="listYear'+i+'" ><option value="1" selected>First Year</option><option value="2">Second Year</option><option value="3">Third Year</option><option value="4">Fourth Year</option><option value="5">Fifth Year</option><option value="6">Sixth Year</option></select></td><td><select name="Term" " id="list'+i+'"><option value="S" selected>Summer Term</option><option value="F">Fall Term</option><option value="W">Winter Term</option></select></td><td><select name="Credits" id="number'+i+'" ><option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></td><td><button type="remove" id='+i+' class="btn btn-danger btn_remove">X</button></td></tr>');
+
+		$('#dynamic_field').append('<tr id="row'+i+'"><td><select name="Years" " id="listYear'+i+'" ><option value="1" selected>First Year</option><option value="2">Second Year</option><option value="3">Third Year</option><option value="4">Fourth Year</option><option value="5">Fifth Year</option><option value="6">Sixth Year</option></select></td><td><select name="Term" " id="list'+i+'"><option value="S" selected>Summer Term</option><option value="F">Fall Term</option><option value="W">Winter Term</option></select></td><td><select name="Credits" id="number'+i+'" ><option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><td><input type="number" min="0" max="18" id="credits1'+i+'"/></td><td><button type="remove" id='+i+' class="btn btn-danger btn_remove">X</button></td></tr>');
 	});
 	$(document).on('click','.btn_remove',function(){
 		var button_id = $(this).attr("id");
